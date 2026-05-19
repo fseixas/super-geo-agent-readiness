@@ -22,11 +22,9 @@ The boundary keeps growing. Sites are no longer optimized only for human readers
 | GEO | ChatGPT, Perplexity, Claude, AI Overviews, Gemini | Authority, quotability, factual accuracy, entity clarity | AI citation rate, brand mentions |
 | Agent Readiness | AI agents that fetch and act | MCP servers, OAuth flows, machine-readable APIs, Markdown content, agentic payments | Pass rate on agentready.org / isitagentready.com checks |
 
-### Google's official position (calibration)
+### Google's published guidance: policy document vs engineering reality
 
-Google publishes its own [GEO optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). Their stated stance: AI Overviews and AI Mode are part of Google Search, not separate engines. Classic SEO at peak quality is the strategy for those surfaces.
-
-Google's published "myths" list. Things they say you do NOT need to do for AI features in Google Search:
+Google publishes its own [GEO optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). It says AI Overviews and AI Mode are part of Google Search, classic SEO is the strategy, and certain practices are myths:
 
 - llms.txt files or other "special" AI markup
 - Content chunking
@@ -34,7 +32,16 @@ Google's published "myths" list. Things they say you do NOT need to do for AI fe
 - Structured data added specifically for AI (still useful for rich results in classic Search)
 - Pursuing inauthentic mentions across the web
 
-This does not invalidate the broader GEO toolkit. ChatGPT (85% of AI referral traffic), Perplexity, Claude, and the training corpora behind future models DO use llms.txt, DO reward chunkability, and DO benefit from AI-aware markup. Calibrate per engine: classic SEO at peak quality for Google AI features, plus the additional surfaces in this skill for every other engine. Google does endorse the agent-readiness layer separately, pointing to [web.dev's agent-friendly site UX guide](https://web.dev/articles/ai-agent-site-ux) and the Universal Commerce Protocol.
+Read this as policy guidance, not engineering reality. Google's published documents have a 20-year history of diverging from algorithm behavior. Several concrete signals undercut the "myths" framing:
+
+- Google's John Mueller publicly calls markdown pages "a stupid idea." Google's Addy Osmani publicly recommends "Markdown over HTML... creating llms.txt as a discovery layer." Two Googlers, opposite advice, both speaking on the record.
+- Google's Lighthouse tool checks for `llms.txt` when scoring agentic browsing capability, and the developer documentation recommends it.
+- Anthropic's voluntarily-published Claude system prompt contains explicit arbitration rules: present-day questions require search regardless of model confidence, original sources beat aggregators, and "heavily-SEO'd topics like product recommendations" are treated with skepticism. These are not described in Google's guide but are present in the engineering reality of frontier models.
+- Modern retrieval architecture (RAG, passage retrieval, source reranking, documented in academic literature since 2020) operates on extracted chunks regardless of whether the model is told to "think about chunks." Content that cannot be cleanly extracted at the section level never enters the retrieval pool.
+
+Operational conclusion is unchanged from before: calibrate per engine. For Google AI Overviews and AI Mode, classic SEO at peak quality is the foundation. For ChatGPT (85% of AI referral traffic), Perplexity, Claude, and training corpora, the additional surfaces in this skill apply. The corrected framing is sharper: Google's AI guide tells you what is defensible to do in front of regulators and what the SEO conference circuit will repeat back at you; the engineering tells you what the model actually rewards. Both descriptions are accurate; they serve different purposes. See `content-strategy.md` for the three-layer arbitration model that explains why the engineering reality differs from the policy.
+
+Google does endorse the agent-readiness layer separately, pointing to [web.dev's agent-friendly site UX guide](https://web.dev/articles/ai-agent-site-ux) and the Universal Commerce Protocol.
 
 ## When to use this skill
 

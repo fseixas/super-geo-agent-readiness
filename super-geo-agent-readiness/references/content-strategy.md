@@ -80,6 +80,25 @@ Don't:
 - Write a wall of prose with no internal structure.
 - Hide the answer mid-paragraph behind a colorful lede.
 
+## The three-layer arbitration model (why the pillars work)
+
+Every frontier model evaluates content through three overlapping systems. The four pillars above are practical tactics; this section explains the underlying mechanism. Use it when a writer asks why the pillars matter, or when diagnosing why a high-quality page is not earning citations.
+
+1. **Latent knowledge.** What the model learned during training. Background world knowledge, semantic relationships, reasoning patterns. The model has a baseline belief about your topic before it sees your content. Content that corroborates the model's prior beliefs has a tailwind. Content that contradicts them needs disproportionately strong evidence.
+2. **Active retrieval.** What the model fetches when answering. Web search results, knowledge graphs, citations. The grounding layer. Your content competes against other retrieved sources in the same query window, not in isolation.
+3. **Arbitration.** The layer that decides which of the above to trust. Anthropic's published Claude system prompt includes explicit arbitration rules: present-day questions require search regardless of model confidence; original sources beat aggregators; topics "subject to a lot of search engine optimization like product recommendations" are treated with skepticism. Similar mechanics exist in other frontier models, though most are not publicly documented.
+
+The four pillars map to these layers:
+
+| Pillar | Primary layer served | Why it matters |
+|---|---|---|
+| Authority | Arbitration | The source-quality filter decides which retrieved results count. Primary-source markers (named author, credentials, citations to peer-reviewed work, first-party data) lift you above the aggregator tier in the filter. |
+| Quotability | Active retrieval | Extractable units enter the retrieval pool. Sections that depend on surrounding context get dropped before the model ever sees them. |
+| Comprehensiveness | Latent knowledge | Covering the topic to the depth the model expects corroborates its prior beliefs. Missing the obvious follow-up question signals shallow coverage. |
+| Structure | Active retrieval | Semantic HTML and heading hierarchy determine which units the retrieval system can extract cleanly. |
+
+The operational implication is non-obvious: a piece of content that is well-written and accurate can still fail at the arbitration layer if it pattern-matches to mid-tier SEO output. The next section addresses that filter directly.
+
 ## Content types most likely to earn AI citations
 
 Some content types massively outperform others for AI citation rates. Source: Semrush AI citation research; corroborated by Backlinko, Animalz, and the Princeton GEO paper (arxiv 2311.09735).
@@ -107,6 +126,33 @@ These rarely earn citations and dilute the rest of the site:
 - Unsourced opinion pieces.
 - Listicles padded with filler ("10 reasons we love AI").
 - AI-generated content with no human editing. The detection tools are improving; even when undetected, the output rarely passes the four pillars.
+
+## Look like a primary source, not like SEO content
+
+Anthropic's published Claude system prompt explicitly instructs the model to be skeptical of "topics that are subject to a lot of search engine optimization like product recommendations, or any other search results that might be highly ranked but inaccurate or misleading." This is a real filter applied at the arbitration layer, before the model evaluates your content on its merits. Content that pattern-matches to mid-tier SEO output gets discounted regardless of how accurate or well-researched it actually is.
+
+The visible markers the filter pattern-matches against:
+
+- Formulaic listicle headers: "10 Best X for Y", "Ultimate Guide to Z", "Top N Tools in 2026"
+- Thin definitional content that paraphrases Wikipedia
+- Affiliate-heavy roundup structures with "winner / runner-up / budget pick" sections
+- "Ultimate guide" or "complete guide" framing without original substance
+- Unsourced authority claims: "experts say", "studies show", "research has proven"
+- Generic stock-photo headers and CTA blocks repeated across articles
+- Author bylines like "By the Team" or no byline at all
+- Conclusion paragraphs that summarize the article rather than adding insight
+
+The fix is not to abandon those formats. Lists, comparisons, and roundups have legitimate uses. The fix is to make the content read as a primary source even when it uses those formats:
+
+- Named author with linked credentials and a face photo on the author profile.
+- Specific numbers from your own measurement, not generic industry estimates.
+- Direct quotes from named experts you actually spoke to, not paraphrases of secondary sources.
+- Datasets you publish, not summaries of other people's datasets.
+- A methodology section explaining how you reached your conclusions.
+- Opinions clearly marked and defended, not hedged into safety.
+- Caveats and falsifiers included where the analysis has limits.
+
+A useful test: would a journalist citing this page quote it as a primary source, or as an example of "what the consensus says"? If the second, the page is in aggregator territory and will be filtered at the arbitration layer.
 
 ## Chunkability rules
 

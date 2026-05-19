@@ -85,6 +85,20 @@ Failures: Medium.
 
 Failures: Low.
 
+### A.6 Primary-source signaling
+
+Anthropic's published Claude system prompt explicitly devalues content that pattern-matches to mid-tier SEO output. This filter runs before merit-based evaluation. Other frontier models apply similar logic via reranking. Looking like a primary source is necessary to pass the arbitration layer.
+
+- [ ] Author named with linked bio page, credentials, and a face photo on the author profile.
+- [ ] At least one piece of original data, original methodology, or first-hand experience is present.
+- [ ] Authority claims are sourced with specific citations rather than vague attributions.
+- [ ] Listicle and "ultimate guide" framing is absent, or backed by original substance per item.
+- [ ] No copy-paste affiliate-roundup structure (winner / runner-up / budget pick) unless the picks are tested first-hand and the test methodology is published.
+- [ ] Titles and headers do not pattern-match to mid-tier SEO ("10 Best X for Y", "The Complete Guide to Z" without unique angle).
+- [ ] A journalist could plausibly cite this page as a primary source on at least one claim, rather than as "an example of what the consensus says."
+
+Failures: High. This is the operational read of the arbitration-layer source-quality filter described in `content-strategy.md`.
+
 ## Section B: Structured data audit (per page)
 
 ### B.1 Schema presence
