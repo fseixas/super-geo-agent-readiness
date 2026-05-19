@@ -128,6 +128,19 @@ Choose 1 to 2. Most teams overlap with their existing SEO platform (Conductor, B
 
 These pre-date AI search but capture mentions across third-party sources (Reddit, Quora, news) that feed AI engines.
 
+### Google-specific surfaces (for AI Overviews and AI Mode)
+
+Per the [Google AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide), these are the surfaces Google explicitly recommends for visibility in their AI features. Treat them as part of the measurement stack when Google AI features are in scope.
+
+| Surface | Purpose |
+|---|---|
+| Google Search Console | Verify the site. Monitor impressions and clicks, including AI Overview-augmented results. Diagnose indexing issues. |
+| Google Merchant Center | Submit product feeds. Required for product citations in AI Overviews and Search shopping experiences. |
+| Google Business Profile | Claim the local business listing. Required for local citations in AI Overviews. |
+| Business Agent | Conversational brand presence in Google Search. Opt-in product layered on Business Profile. |
+
+These are free, official, and Google-only. They do not measure ChatGPT, Perplexity, Claude, or Gemini's non-Search behavior. Pair them with the AI search monitoring tools above for full coverage. For structured data validation, see the Google Rich Results Test under the next section.
+
 ### Structured data validation
 
 - Google Rich Results Test: https://search.google.com/test/rich-results

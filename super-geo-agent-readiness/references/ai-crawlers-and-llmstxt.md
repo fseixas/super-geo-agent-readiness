@@ -2,6 +2,12 @@
 
 How to make a site readable by AI search crawlers and answer engines. Covers robots.txt configuration, Content Signals, llms.txt, llms-full.txt, and per-directory llms.txt strategy for large sites.
 
+## A note on Google
+
+Google's official position is that llms.txt is not used for AI Overviews or AI Mode. They classify it as a "myth" for Google AI features. See the [Google AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
+
+This file targets ChatGPT (85% of AI referral traffic), Perplexity, Claude, training corpora, and any future engine that adopts the spec. Implement llms.txt knowing Google ignores it for AI features but it remains the standard for the rest of the ecosystem. For Google-specific visibility, the relevant controls are robots.txt directives for Googlebot and Google-Extended, classic sitemap.xml, and Search Console verification.
+
 ## The two-layer crawler problem
 
 Two distinct classes of AI agents fetch your site:

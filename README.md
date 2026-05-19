@@ -1,4 +1,4 @@
-# Super Geo Agent Readiness
+# Super GEO Agent Readiness
 
 A Claude Skill that covers Generative Engine Optimization (GEO) and agent readiness in one place. SEO targeted blue links. This skill targets the answers AI engines produce, and the agents that fetch and act on your content.
 
@@ -11,6 +11,10 @@ Four optimization surfaces, one routing layer:
 - **Platform tactics.** Per-engine optimization for ChatGPT, Perplexity, Google AI Overviews, AI Mode, Claude, Gemini, Copilot, and Grok, with current traffic-share numbers so you know where to spend effort.
 - **Agent readiness.** MCP Server Cards, A2A Agent Cards, OpenAPI, API Catalog (RFC 9727), OAuth metadata (RFC 8414/9728), Web Bot Auth, x402, ACP, UCP, Markdown content negotiation. Compiled from Cloudflare's agent-readiness work and the agentready.org open specification.
 
+## Per-engine calibration
+
+Google publishes its own [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) and explicitly classifies several common GEO tactics as "myths" for Google AI features (llms.txt, content chunking, AI-specific rewrites, AI-specific structured data). The skill incorporates Google's position: for AI Overviews and AI Mode, optimize for classic Google Search at peak quality. For ChatGPT, Perplexity, Claude, and training corpora, the additional surfaces in this skill apply.
+
 ## What's inside
 
 ```
@@ -22,7 +26,7 @@ super-geo-agent-readiness/
     ├── structured-data.md                JSON-LD for Article, FAQ, Organization, Product, HowTo, Person.
     ├── ai-crawlers-and-llmstxt.md        Crawler list, robots.txt, llms.txt formats.
     ├── platforms.md                      Per-engine optimization tactics.
-    ├── agent-readiness.md                MCP, OAuth, x402, A2A, API Catalog.
+    ├── agent-readiness.md                MCP, OAuth, x402, A2A, API Catalog, UCP.
     ├── measurement.md                    Benchmarks, GA4 regex for AI referral traffic, monitoring tools.
     ├── audit-checklist.md                Severity-graded audit with a final report template.
     └── templates.md                      Every config in one file, ready to paste.
@@ -47,6 +51,8 @@ Compiled and extended from:
 - [seo-geo-claude-skills](https://github.com/aaron-he-zhu/seo-geo-claude-skills)
 - Cloudflare, [Agent Readiness](https://blog.cloudflare.com/agent-readiness/)
 - [agentready.org](https://agentready.org) open specification
+- Google, [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
+- Google, [agent-friendly website best practices](https://web.dev/articles/ai-agent-site-ux)
 
 ## License
 

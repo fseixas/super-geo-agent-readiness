@@ -443,6 +443,20 @@ ACP. OpenAPI-backed checkout sessions for agent-driven purchases. Maintained by 
 
 UCP. Two-sided capability negotiation between merchants and agents. Co-developed by Shopify and Google. Place at `/.well-known/ucp`.
 
+Google explicitly endorses UCP in its [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) as the emerging protocol for letting Search agents do more on a site. This is the rare case where Google publicly aligns with a specific agent-readiness standard. For e-commerce sites that care about Google-driven agent traffic, UCP is no longer purely speculative.
+
+### Browser agent UX (Google-endorsed reference)
+
+Google publishes [agent-friendly website best practices on web.dev](https://web.dev/articles/ai-agent-site-ux). The focus is browser agents that read DOM, screenshots, and the accessibility tree. Useful complement to the protocol-level agent-readiness work in this file. Key practices:
+
+- Semantic HTML with correct ARIA roles. Agents that parse the accessibility tree rely on this.
+- Stable, machine-readable form labels. Avoid placeholder-only labels.
+- Avoid CAPTCHAs on non-sensitive paths. Browser agents fail on them.
+- Clear visual hierarchy. Helps screenshot-based agents identify primary actions.
+- Predictable navigation patterns. Multi-step flows should not depend on hidden state.
+
+Browser agents and protocol-level agents (MCP, OpenAPI) are complementary, not alternatives. The browser-agent path matters today; the protocol path becomes more important as agents mature.
+
 ## Cloudflare's "leading by example" patterns for large doc sites
 
 These optimizations together produced 31% fewer tokens consumed and 66% faster answers when an agent queried Cloudflare's docs vs. competitor docs:

@@ -16,6 +16,22 @@ Severity levels:
 - **Medium**: Optimization opportunity. Improves citation rate.
 - **Low**: Polish. Worth doing but not urgent.
 
+## Calibration: Google's "myths" list
+
+Before flagging items as failures, remember Google explicitly says these are NOT required for AI Overviews or AI Mode. They still help non-Google engines, so keep them in audits scoped to "all AI engines" and adjust severity for audits scoped only to Google.
+
+| Item | Google AI features | Other engines (ChatGPT, Perplexity, Claude) |
+|---|---|---|
+| llms.txt | Not used. Severity Low for Google-only audit | Used. Severity High |
+| Content chunking | Not required | Rewarded by extraction-style answers. Severity Medium |
+| AI-specific rewrites | Not needed | Helps verbatim quoting. Severity Low |
+| Structured data targeted at AI | Not required for AI features (still useful for rich results) | Helps citation. Severity Medium |
+| Inauthentic mentions / link schemes | Explicitly counterproductive. Spam policy violation. Severity High if detected | Same. Counterproductive. |
+
+When scoping an audit, ask the user: "Is this for visibility in all AI engines (ChatGPT, Perplexity, Claude, Google), or specifically for Google AI Overviews and AI Mode?" The severity weighting changes materially based on the answer.
+
+For Google-scoped audits, prioritize: Search Console verification, classic Search Essentials compliance, E-E-A-T signals, helpful-content quality, Core Web Vitals, JavaScript SEO, duplicate content reduction, and Merchant Center or Business Profile feeds where relevant.
+
 ## Section A: Content audit (per page)
 
 ### A.1 Authority

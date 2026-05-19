@@ -110,12 +110,16 @@ These rarely earn citations and dilute the rest of the site:
 
 ## Chunkability rules
 
-LLMs read content in chunks. Optimize for chunk independence.
+LLMs that extract verbatim passages (Perplexity, ChatGPT, Claude) read content in chunks. Optimize for chunk independence to maximize citation likelihood on those engines.
+
+Google's position: chunking is NOT required for AI Overviews or AI Mode. Their systems understand full-page context. The advice below is for the rest of the AI ecosystem, plus it improves human readability for everyone.
 
 - A paragraph or section taken out of context should still make sense.
 - Avoid pronouns that reach back across headings ("this approach" referencing a definition three sections up).
 - Repeat the key entity name in each section where it is relevant ("Generative Engine Optimization" rather than "it").
 - Avoid forward references ("as we will see below"). The chunk that contains "below" may not be the chunk the model retrieves.
+
+Net advice: write for chunk independence anyway. The cost is near zero, the benefit covers most non-Google engines, and the readability lift is real.
 
 ## Entity clarity
 

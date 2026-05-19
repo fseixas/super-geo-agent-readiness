@@ -69,16 +69,27 @@ AI-generated summaries that appear inside Google Search above the traditional re
 
 86% domain overlap with Google's top 10. The Overview is generated from Google's index plus light retrieval; if you rank well in classic Google, AI Overviews follow naturally.
 
+Google's official position: AI Overviews are part of Google Search, not a separate engine. Optimization is SEO. See the [Google AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). Google explicitly calls llms.txt, content chunking, AI-specific rewrites, and AI-specific structured data "myths" for their AI features.
+
 Most common cited domains in AI Overviews: Quora #1, Reddit #2, with YouTube and Facebook appearing in 68% or more of Overview-augmented results.
 
 ### How to optimize
 
-- Strong classic SEO is the foundation. AI Overviews are tightly coupled to ranking.
+- Classic SEO at peak quality. AI Overviews are tightly coupled to ranking.
+- Pass Google's "Search Essentials": indexed, snippet-eligible, no spam policy violations.
+- Strong E-E-A-T. Google explicitly applies E-E-A-T to AI Overview eligibility.
+- Helpful, non-commodity, people-first content. First-hand experience and original viewpoint outperform restated common knowledge.
 - FAQ schema is high-leverage. AI Overviews often quote directly from FAQ structured data.
-- Optimize for E-E-A-T. Google explicitly applies E-E-A-T to AI Overview eligibility.
-- Allow `Google-Extended` in robots.txt.
-- Submit product feeds via Google Merchant Center for product citations.
-- Be present in third-party content that ranks well (Quora, Reddit answers, Wikipedia mentions).
+- Reduce duplicate content. Strong canonical URLs.
+- Allow `Google-Extended` in robots.txt (controls inclusion in Gemini training and grounding, distinct from Googlebot).
+- Verify the site in Google Search Console. Monitor AI Overview impressions and clicks via the standard Performance report.
+- For products, submit feeds via Google Merchant Center.
+- For local businesses, claim and maintain a Google Business Profile. Consider Business Agent for conversational brand presence in Search.
+- Be present in third-party content that ranks well (Quora, Reddit answers, Wikipedia mentions, industry publications).
+
+### What Google says you should ignore
+
+Direct quote from their guide: you do not need llms.txt, content chunking, AI-specific rewrites, AI-specific structured data, or pursuit of inauthentic mentions. Implement those for other engines (ChatGPT, Perplexity, Claude) and expect zero direct benefit from Google.
 
 ### Common patterns
 
@@ -93,13 +104,16 @@ The dedicated AI search experience inside Google (distinct from AI Overviews). U
 
 54% domain overlap and 35% URL overlap with Google's top 10. About 7 unique domains appear in the sidebar that do not rank in the top 10.
 
+Google's official guidance: AI Mode is still Google Search. The same "myths" list applies. No special AI markup needed. The retrieval is more aggressive than AI Overviews but the optimization surface is the same.
+
 ### How to optimize
 
-- Schema and llms.txt matter more here than in classic Google.
-- Strong third-party citation profile (Reddit, YouTube, industry forums) helps.
-- The same fundamentals (E-E-A-T, comprehensive content, structured data) carry over.
+- Same fundamentals as AI Overviews: classic SEO at peak quality, E-E-A-T, helpful and original content, comprehensive coverage.
+- Search Console verification and monitoring.
+- Strong third-party citation profile (Reddit, YouTube, industry forums) helps because AI Mode reaches deeper into the long tail.
+- Schema.org for rich results in classic Search. Per Google, not required for AI Mode itself, but the structured data tends to correlate with the same content quality signals AI Mode rewards.
 
-Treat AI Mode as separate from AI Overviews when measuring.
+Treat AI Mode as separate from AI Overviews when measuring. Track separately in Search Console reports as they are surfaced.
 
 ## Claude (Anthropic)
 
@@ -125,13 +139,14 @@ Patterns are similar to Perplexity. Pages that rank in Google or Bing are more l
 
 ### How it sources content
 
-Gemini integrates with Google Search. Behavior overlaps significantly with AI Overviews when web grounding is enabled.
+Gemini integrates with Google Search. Behavior overlaps significantly with AI Overviews when web grounding is enabled. Same official guidance as Google AI Overviews applies: classic SEO at peak quality, no special AI markup.
 
 ### How to optimize
 
-- Same as Google AI Overviews. Strong classic SEO, schema, FAQ markup.
-- Allow `Google-Extended` in robots.txt.
-- Schema.org markup is heavily weighted.
+- Same as Google AI Overviews. Classic SEO, E-E-A-T, helpful content.
+- FAQ markup for rich results (incidentally helps).
+- Allow `Google-Extended` in robots.txt. This is the relevant control for Gemini training and grounding (Googlebot remains separate).
+- Search Console verification.
 
 ## Copilot (Microsoft)
 

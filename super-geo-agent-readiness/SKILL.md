@@ -3,7 +3,7 @@ name: super-geo-agent-readiness
 description: Generative Engine Optimization plus agent readiness. Use this skill whenever the user asks about GEO, AEO, LLMO, optimizing content for AI search engines (ChatGPT, Perplexity, Google AI Overviews, Claude, Gemini, Copilot), getting cited by LLMs, brand mentions in AI responses, llms.txt, robots.txt for AI crawlers, Schema.org JSON-LD, FAST framework, agent readiness, MCP server discovery, Web Bot Auth, OAuth for agents, API Catalog, agentic commerce (x402, ACP, UCP), Markdown content negotiation, or auditing a site or page for AI visibility. Also trigger when the user says "AI SEO", asks how to "rank in ChatGPT", "show up in Perplexity", "appear in AI Overviews", or wants a site to "speak to AI agents". Trigger even when the request is implicit, such as "review this article so AI search picks it up" or "make our docs agent-friendly".
 ---
 
-# GEO Super Skill
+# Super GEO Agent Readiness
 
 Generative Engine Optimization (GEO) plus agent readiness. One skill, four optimization surfaces: content, technical site, platform tactics, and the agent layer.
 
@@ -21,6 +21,20 @@ The boundary keeps growing. Sites are no longer optimized only for human readers
 | AEO | Voice assistants, featured snippets | Q&A format, structured data | Featured snippet appearances |
 | GEO | ChatGPT, Perplexity, Claude, AI Overviews, Gemini | Authority, quotability, factual accuracy, entity clarity | AI citation rate, brand mentions |
 | Agent Readiness | AI agents that fetch and act | MCP servers, OAuth flows, machine-readable APIs, Markdown content, agentic payments | Pass rate on agentready.org / isitagentready.com checks |
+
+### Google's official position (calibration)
+
+Google publishes its own [GEO optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). Their stated stance: AI Overviews and AI Mode are part of Google Search, not separate engines. Classic SEO at peak quality is the strategy for those surfaces.
+
+Google's published "myths" list. Things they say you do NOT need to do for AI features in Google Search:
+
+- llms.txt files or other "special" AI markup
+- Content chunking
+- Rewriting content for AI
+- Structured data added specifically for AI (still useful for rich results in classic Search)
+- Pursuing inauthentic mentions across the web
+
+This does not invalidate the broader GEO toolkit. ChatGPT (85% of AI referral traffic), Perplexity, Claude, and the training corpora behind future models DO use llms.txt, DO reward chunkability, and DO benefit from AI-aware markup. Calibrate per engine: classic SEO at peak quality for Google AI features, plus the additional surfaces in this skill for every other engine. Google does endorse the agent-readiness layer separately, pointing to [web.dev's agent-friendly site UX guide](https://web.dev/articles/ai-agent-site-ux) and the Universal Commerce Protocol.
 
 ## When to use this skill
 
