@@ -99,7 +99,32 @@ Anthropic's published Claude system prompt explicitly devalues content that patt
 
 Failures: High. This is the operational read of the arbitration-layer source-quality filter described in `content-strategy.md`.
 
+### A.7 Off-site presence and discovery
+
+The strongest measured correlates of AI visibility are off the site (`ahrefs-2026-studies.md`). An audit that stops at on-page factors misses the largest lever, so check the brand's footprint beyond its own pages.
+
+- [ ] The brand has a YouTube presence (own channel and/or mentions in third-party videos). This was the single strongest visibility correlate in a 75,000-brand study.
+- [ ] The brand earns mentions in credible third-party content (industry publications, podcasts, Reddit, Quora) on its core topics.
+- [ ] The brand appears, ideally in the top third, on credible "best X" comparison lists in its category. Position correlates with being recommended.
+- [ ] The brand has a Wikipedia entry or is working toward the notability needed for one (a "dead" but high-value citation slot).
+- [ ] The site is registered and verified in Bing Webmaster Tools, since 28% of ChatGPT's most-cited pages have zero Google visibility and ride the Bing-fed layer.
+- [ ] The brand uses one canonical name consistently across all external profiles (entity disambiguation).
+
+Failures: High. For emerging brands this section is usually the binding constraint, ahead of any on-page fix.
+
+### A.8 Retrieval-gate readiness
+
+ChatGPT cites only about half the URLs it retrieves, deciding which pages to open from the title, snippet, and URL alone (`ahrefs-2026-studies.md`). These checks address that gate.
+
+- [ ] Title tag states the subject plainly and matches likely query phrasing (not clever or vague).
+- [ ] Meta description answers rather than teases; it reads as a usable snippet.
+- [ ] URL is clean and human-readable (`/guides/topic-name`, not opaque query strings).
+
+Failures: Medium.
+
 ## Section B: Structured data audit (per page)
+
+Calibration note: schema is hygiene, not an AI-citation lever. A controlled study found adding JSON-LD produced no meaningful citation lift on any AI platform (`ahrefs-2026-studies.md`). Score schema for what it actually delivers, which is rich results in classic Search and entity clarity. The severities below reflect that: missing schema is a real gap for Search and entity binding, but it is not the reason a page fails to earn AI citations. Do not let a schema gap outrank content quality or off-site authority in the fix list.
 
 ### B.1 Schema presence
 
@@ -108,7 +133,7 @@ Failures: High. This is the operational read of the arbitration-layer source-qua
 - [ ] Validates with no errors in Google Rich Results Test.
 - [ ] Validates with no errors in schema.org Validator.
 
-Failures: High.
+Failures: Medium (hygiene and rich-result eligibility, not an AI-citation blocker).
 
 ### B.2 Article schema (for content pages)
 
@@ -120,7 +145,7 @@ Failures: High.
 - [ ] `mainEntityOfPage` set correctly.
 - [ ] `image` present and the URL resolves.
 
-Failures: High.
+Failures: Medium.
 
 ### B.3 Organization schema (on homepage and About)
 
@@ -129,7 +154,7 @@ Failures: High.
 - [ ] `sameAs` array contains at least 3 authoritative external profiles (LinkedIn, Twitter, Wikipedia, Crunchbase, GitHub, official press contact).
 - [ ] `contactPoint` present where applicable.
 
-Failures: High.
+Failures: Medium. This one earns its keep through entity clarity (`sameAs` binds your brand to the right knowledge-graph node), not citation lift.
 
 ### B.4 FAQ schema (where applicable)
 

@@ -22,6 +22,8 @@ Don't:
 - Use anonymous authors or generic byline ("By the Team").
 - Recycle definitions everyone else publishes. AI engines prefer the source, not the summary.
 
+A note on where authority actually comes from: across 75,000 brands, the factors most correlated with AI visibility were off the page, not on it. YouTube mentions correlated more strongly than any conventional SEO metric (~0.737), and off-site brand mentions followed close behind (`ahrefs-2026-studies.md`). On-page authority signals matter for winning a citation once a page is in play, but the larger lever is being a brand the engines already know about from video, podcasts, and third-party coverage. Content work and off-site presence are complementary, and the off-site side is usually the more neglected of the two.
+
 Example:
 
 Bad: "AI search traffic is growing fast and many websites are seeing big gains."
@@ -63,6 +65,8 @@ Do:
 Don't:
 - Cap an article at an artificial word count if the topic needs more.
 - Skip the boring "what is it" basics on advanced pages. AI engines may need that context for query matching.
+- Pad to hit a length target. Short and long content both earn AI Overview citations; length is not a selection factor on its own (`ahrefs-2026-studies.md`). Comprehensiveness means covering the topic, not hitting a word count.
+- Treat publishing more pages as a visibility strategy. Site-wide page count showed almost no correlation with AI visibility across 75,000 brands. Depth and off-site authority carry the weight, not volume.
 
 ### 4. Structure
 
@@ -101,7 +105,9 @@ The operational implication is non-obvious: a piece of content that is well-writ
 
 ## Content types most likely to earn AI citations
 
-Some content types massively outperform others for AI citation rates. Source: Semrush AI citation research; corroborated by Backlinko, Animalz, and the Princeton GEO paper (arxiv 2311.09735).
+Some content types massively outperform others for AI citation rates. Source: Semrush AI citation research; corroborated by Backlinko, Animalz, the Princeton GEO paper (arxiv 2311.09735), and the Ahrefs 2026 study set (`ahrefs-2026-studies.md`).
+
+The strongest single finding: across 26,283 source URLs and 750 top-of-funnel prompts, recently updated "best X" comparison lists were the most-cited page type, at 43.8% of all citations, and the pattern held across every major assistant. Position inside the list correlated with being recommended (top third beats bottom), and freshness mattered (79.1% of cited lists had been updated in 2025). This does not contradict the primary-source filter below. It sharpens it: the comparison format wins when executed as a primary source, and loses when executed as thin affiliate filler. Note also that 35% of cited best-lists sat on low-authority domains, so the format works partly because ChatGPT leans on Bing, where weaker sites rank more easily. Do not read that as license to publish low-quality lists; read it as evidence that a credible, well-maintained list in your category is high-leverage.
 
 | Content type | Why it earns citations | Best practices |
 |---|---|---|
@@ -153,6 +159,19 @@ The fix is not to abandon those formats. Lists, comparisons, and roundups have l
 - Caveats and falsifiers included where the analysis has limits.
 
 A useful test: would a journalist citing this page quote it as a primary source, or as an example of "what the consensus says"? If the second, the page is in aggregator territory and will be filtered at the arbitration layer.
+
+## The retrieval gate: title, snippet, URL
+
+Before an engine reads your page, it decides whether to open it at all. ChatGPT retrieves dozens of candidate URLs per query but cites only about half of them (`ahrefs-2026-studies.md`). Each candidate comes back as a title, a snippet, a URL, and an ID, and ChatGPT uses that metadata to choose which pages are worth opening. Being retrieved and being cited are different events, separated by a gate that runs on metadata, not full content.
+
+Practical consequences:
+
+- Write the title tag to match likely query phrasing and to state the subject plainly. A vague or clever title loses at the gate.
+- Write a meta description that answers, not teases. The snippet is part of the decision.
+- Use clean, human-readable URLs (`/guides/geo-content-strategy`, not `/p?id=8842`). Opaque URLs carry less signal at the gate.
+- The first screenful still has to deliver, because pages that clear the gate are then judged on content. But a strong page with a weak title and snippet may never be opened.
+
+This sits upstream of the four pillars. The pillars win the citation once the page is open; the gate decides whether the page is opened.
 
 ## Chunkability rules
 

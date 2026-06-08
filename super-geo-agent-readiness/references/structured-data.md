@@ -8,6 +8,24 @@ AI engines use structured data as a high-signal trust source. A page with valid 
 
 Google explicitly recommends JSON-LD over microdata or RDFa. AI engines have aligned on the same convention.
 
+## Does adding schema increase AI citations? (the honest answer)
+
+No, not on its own. This is the single most over-sold claim in GEO, so the skill states the evidence plainly.
+
+A controlled study tracked 1,885 pages that added JSON-LD between August 2025 and March 2026, matched against 4,000 control pages, using difference-in-differences (`ahrefs-2026-studies.md`). Adding schema produced no meaningful citation lift on any platform: AI Overviews -4.6% (small but statistically significant, and both treated and control pages were already declining), AI Mode +2.4%, ChatGPT +2.2% (both indistinguishable from zero).
+
+The confusion comes from a real correlation: a broad scan of 6 million URLs found cited pages were nearly 3x more likely to carry schema than non-cited pages. That gap is selection, not cause. Schema lives on better-maintained, more technically mature sites that already publish stronger content and earn more links. The schema rides those signals; it does not generate them.
+
+So why implement it at all? Three reasons that hold up:
+
+- Rich results in classic Search. FAQ, HowTo, Product, Article, and Review markup still drive enhanced SERP features, and classic Search still sends roughly 190x more website traffic than ChatGPT.
+- Entity clarity. Organization and Person schema with `sameAs` links help engines bind your brand and people to the right knowledge-graph node. This is about disambiguation, not a citation multiplier.
+- Near-zero cost once. It is cheap to ship and harmless to keep.
+
+What this means operationally: ship schema once, correctly, as part of basic hygiene. Do not stage a multi-week schema project expecting AI citations to climb, do not promise clients a citation lift from markup, and move the saved budget to content quality and off-site authority, which is where the evidence points. See `ahrefs-2026-studies.md` and `content-strategy.md`.
+
+The patterns below remain the correct implementation when you do add markup.
+
 ## Article schema (use on every blog post, guide, article)
 
 ```json

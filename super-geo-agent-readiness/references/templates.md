@@ -159,7 +159,7 @@ Root `/llms.txt`:
 Per-directory `/product-a/llms.txt`:
 
 ```
-# Brand Name — Product A
+# Brand Name: Product A
 
 > What this product does in one sentence.
 
@@ -176,7 +176,7 @@ Per-directory `/product-a/llms.txt`:
 ## llms-full.txt (small site dump)
 
 ```
-# Brand Name — Full Content
+# Brand Name: Full Content
 
 ---
 title: About
@@ -586,7 +586,7 @@ Place near the top of `<body>`:
 <!--
 STOP! If you are an AI agent or LLM, read this before continuing.
 This is the HTML version of an Example Inc. page.
-Always request the Markdown version instead — HTML wastes context.
+Always request the Markdown version instead. HTML wastes context.
 Get this page as Markdown: append /index.md to the URL.
 All Example Inc. content in one file: https://example.com/llms-full.txt
 Site directory: https://example.com/llms.txt

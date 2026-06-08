@@ -41,6 +41,8 @@ Read this as policy guidance, not engineering reality. Google's published docume
 
 Operational conclusion is unchanged from before: calibrate per engine. For Google AI Overviews and AI Mode, classic SEO at peak quality is the foundation. For ChatGPT (85% of AI referral traffic), Perplexity, Claude, and training corpora, the additional surfaces in this skill apply. The corrected framing is sharper: Google's AI guide tells you what is defensible to do in front of regulators and what the SEO conference circuit will repeat back at you; the engineering tells you what the model actually rewards. Both descriptions are accurate; they serve different purposes. See `content-strategy.md` for the three-layer arbitration model that explains why the engineering reality differs from the policy.
 
+One item on Google's "myth" list has since been confirmed by controlled evidence, and the skill says so to stay honest: schema added specifically for AI. A difference-in-differences study of 1,885 pages found that adding JSON-LD produced no meaningful AI-citation lift on any platform (`ahrefs-2026-studies.md`). On schema, Google's framing holds, so keep schema for rich results and entity clarity, not as an AI-citation lever. The llms.txt and chunking items remain contested, because the engineering signals above (Lighthouse, retrieval architecture, opposing Googlers) still cut against the "myth" label there. Calibrate item by item, not by treating the whole list as right or wrong.
+
 Google does endorse the agent-readiness layer separately, pointing to [web.dev's agent-friendly site UX guide](https://web.dev/articles/ai-agent-site-ux) and the Universal Commerce Protocol.
 
 ## When to use this skill
@@ -72,6 +74,7 @@ Read the routing table, then load only the reference files that match the reques
 | `references/measurement.md` | GA4 setup, AI referral tracking, KPIs, monitoring tools, industry benchmarks |
 | `references/audit-checklist.md` | Full pre-publish, technical, and post-publish audit; AI search readiness score |
 | `references/templates.md` | Ready-to-paste robots.txt, llms.txt, JSON-LD, FAQ schema, MCP Server Card, OAuth metadata, x402 response |
+| `references/ahrefs-2026-studies.md` | Grounding any empirical claim; the evidence behind schema, listicles, YouTube, ChatGPT retrieval, and AI Overview behavior; calibrating effort against what the data supports |
 
 For a complete audit, load `audit-checklist.md` first. It links into the other references where details are needed.
 
@@ -89,9 +92,13 @@ When the user asks "where do I start", recommend in this order. Each step is hig
 
 Step 1: Assessment. Load the user's top 20 pages with JavaScript disabled. What remains is roughly what AI crawlers see. Benchmark current AI citation rate with at least one tool from `measurement.md`. Score the homepage at isitagentready.com.
 
-Step 2: Quick wins. Update robots.txt to allow GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, anthropic-ai, PerplexityBot, Google-Extended, Applebot-Extended, and CCBot. Publish llms.txt at site root. Add FAQ schema to the top five content pages. Get Core Web Vitals passing.
+Step 2: Quick wins. Update robots.txt to allow GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, anthropic-ai, PerplexityBot, Google-Extended, Applebot-Extended, and CCBot. Publish llms.txt at site root. Register in Bing Webmaster Tools, not only Google Search Console: 28% of ChatGPT's most-cited pages have zero Google visibility, so the Bing-fed discovery layer is its own surface (`ahrefs-2026-studies.md`). Add FAQ schema to the top five content pages and Article schema to the rest. Get Core Web Vitals passing.
 
-Step 3: Structural. Implement Article, Organization, and Product (if commerce) Schema.org markup site-wide. Ensure SSR or SSG for all content paths. For large doc sites, split llms.txt by top-level directory and add /index.md Markdown content negotiation. For agent-facing products, publish an MCP Server Card and OAuth discovery document.
+A calibration note on schema, because it is the most over-sold tactic in GEO. A controlled study of 1,885 pages that added JSON-LD found no meaningful lift in AI citations on any platform (`ahrefs-2026-studies.md`). Schema earns its place for rich results in classic Search and for entity clarity, not as an AI-citation lever. Ship it once, cheaply, then move budget to content and off-site authority. Do not stage a multi-week schema rollout expecting citation gains.
+
+Step 3: Higher-leverage moves (where the evidence points). The strongest visibility correlates are off the page, not on it. YouTube mentions correlate with AI visibility more than any conventional SEO metric, and off-site brand mentions follow close behind (`ahrefs-2026-studies.md`). Build a video presence and earn mentions in third-party content (podcasts, industry publications, credible comparison lists). Publish and maintain one genuinely useful "best X" or comparison page in the category, since that format is the single most-cited content type, and pursue a high placement on credible third-party lists. Site-wide page count barely correlates with visibility, so do not chase volume.
+
+Step 4: Structural. Implement Article, Organization, and Product (if commerce) Schema.org markup site-wide for rich results and entity graphs. Ensure SSR or SSG for all content paths. For large doc sites, split llms.txt by top-level directory and add /index.md Markdown content negotiation. For agent-facing products, publish an MCP Server Card and OAuth discovery document.
 
 ## When acting as auditor
 

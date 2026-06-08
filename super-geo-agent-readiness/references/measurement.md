@@ -16,6 +16,20 @@ How to track AI search performance, set up GA4 for AI referral traffic, and choo
 | Brand mentions in non-branded AI queries | 26 to 39% | Semrush AI Mentions Study |
 | LLM-originated traffic growth Q2 2024 to Q2 2025 | +800% | Backlinko 2025 |
 | Cloudflare docs token reduction with Markdown | up to 80% | Cloudflare April 2026 |
+| AI Overview click reduction to #1 organic result | 58% (from 34.5% ~10 months earlier) | Ahrefs 2026 |
+| AI Overview citations from Google top 10 | 38% (from 76% a year earlier) | Ahrefs 2026 |
+| AI Overviews on informational-intent queries | 99.9% | Ahrefs 2026 |
+| AI Overview trigger rate on shopping queries | 3.2% | Ahrefs 2026 |
+| ChatGPT URLs retrieved that get cited | ~50% | Ahrefs 2026 |
+| ChatGPT most-cited pages with zero Google visibility | 28% | Ahrefs 2026 |
+| ChatGPT most-cited pages that are influenceable | 32.3% | Ahrefs 2026 |
+| "Best X" lists as share of cited page types | 43.8% | Ahrefs 2026 |
+| Strongest visibility correlate (YouTube mentions, Spearman) | ~0.737 | Ahrefs 2026 |
+| Effect of adding schema on AI citations | ~0 (no meaningful lift) | Ahrefs 2026 (controlled DiD) |
+| AIO vs AI Mode citation overlap | 13.7% (86% semantic agreement) | Ahrefs 2026 |
+| ChatGPT share of Google search volume | ~12% | Ahrefs 2026 |
+| Google vs ChatGPT website referral traffic | ~190x more from Google | Ahrefs 2026 |
+| Google clicks landing in top 10 results | 96.98% | Ahrefs 2026 |
 
 For any number older than the cutoff date, web_search before quoting.
 
@@ -40,6 +54,16 @@ How often your brand name appears in AI responses, branded and non-branded queri
 - Non-branded queries ("Best X for Y") should mention you proportionally to your market presence. Industry baseline: 26 to 39% of non-branded queries include at least one brand mention; emerging brands often see 0%.
 
 Track sentiment too. A brand mention with hedging language ("might be worth considering") is less valuable than a clear recommendation ("we recommend").
+
+### Off-site presence (leading indicator)
+
+Citation rate is a lagging metric. The strongest measured leading indicators sit off your own site, so track them as inputs that predict future visibility.
+
+- YouTube mentions: the single strongest correlate of AI visibility in a 75,000-brand study, ahead of every conventional SEO metric (`ahrefs-2026-studies.md`). Track your own channel's output plus the count of third-party videos that mention your brand.
+- Third-party brand mentions: count credible mentions across Reddit, Quora, industry publications, podcasts, and comparison lists. These feed the engines independently of your pages.
+- Comparison-list placements: track whether your brand appears, and how high, on the credible "best X" lists in your category. Position correlates with being recommended.
+
+These are not vanity metrics. They are the work that moves citation rate two quarters out. A schema rollout is not on this list, because the controlled evidence shows it does not move AI citations (see "Common measurement mistakes").
 
 ### AI referral traffic
 
@@ -199,3 +223,4 @@ Avoid drowning executives in tool-specific scores. Tie everything back to traffi
 - Choosing too many tools. Overlapping data slows decisions. Pick one citation tracker, one content tool, and one brand mention tool.
 - Reporting per-platform numbers in silos. The cross-platform pattern matters more than any single engine's behavior.
 - Ignoring the third-party citation surface. Most of the lift comes from mentions on Reddit, Quora, industry blogs, podcasts. Track those separately.
+- Treating a schema rollout as a citation KPI. A controlled study found adding JSON-LD produced no meaningful AI-citation lift on any platform (`ahrefs-2026-studies.md`). Measure schema by rich-result eligibility in classic Search, not by AI citations.

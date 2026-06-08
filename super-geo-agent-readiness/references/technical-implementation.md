@@ -96,7 +96,7 @@ curl -sL https://example.com/page | grep -i "main keyword from page"
 curl -sL -w "%{size_download}\n" https://example.com/page -o /dev/null
 ```
 
-If F fails on a page, fix that before doing any other GEO work. The schema, the llms.txt, the content quality — none of it reaches the AI engine if the crawler gets nothing back.
+If F fails on a page, fix that before doing any other GEO work. The schema, the llms.txt, the content quality: none of it reaches the AI engine if the crawler gets nothing back.
 
 ## Core Web Vitals
 
