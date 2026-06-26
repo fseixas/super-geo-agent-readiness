@@ -197,6 +197,72 @@ url: https://example.com/pricing
 [Full content of /pricing pasted here.]
 ```
 
+## OKF bundle starter (serve at /okf/)
+
+Google's Open Knowledge Format, v0.1. A bundle is a directory of markdown files served at `/okf/`. See `agent-readiness.md` for what it does and does not do (registration-layer bet, no crawler consumes bundles yet).
+
+`/okf/index.md` (no frontmatter except the optional version declaration; lists every concept):
+
+```
+---
+okf_version: "0.1"
+---
+
+# Articles
+
+* [How to Connect the MCP Server](/articles/mcp-server.md) - The official servers, why they did not connect, and the fix.
+* [AI Search Optimization Basics](/articles/ai-search-basics.md) - What changes when the reader is a model, not a person.
+
+# Reference
+
+* [Pricing](/reference/pricing.md) - Current plans and prices in plain text.
+* [About](/reference/about.md) - Who we are and what we do.
+```
+
+`/okf/articles/mcp-server.md` (a concept file; `type` is the only required field):
+
+```
+---
+type: Article
+title: How to Connect the MCP Server
+description: The official servers, why they did not connect, and the fix.
+resource: https://example.com/blog/mcp-server/
+tags: [mcp, integration]
+timestamp: 2026-06-14T00:00:00Z
+---
+
+# How to Connect the MCP Server
+
+The body of the page as clean markdown, navigation and ads stripped out.
+Favor headings, lists, tables, and fenced code over prose.
+
+Cross-link with bundle-relative links: see the [pricing reference](/reference/pricing.md).
+
+# Citations
+
+[1] [Official MCP documentation](https://modelcontextprotocol.io)
+```
+
+`/okf/log.md` (optional change history, newest first):
+
+```
+# Update Log
+
+## 2026-06-14
+* **Creation**: Added [How to Connect the MCP Server](/articles/mcp-server.md).
+
+## 2026-06-10
+* **Initialization**: Created bundle structure and root [index](/index.md).
+```
+
+Then add one line to `llms.txt` pointing at the bundle:
+
+```
+## Agent Resources
+
+- [OKF bundle](https://example.com/okf/index.md): full site content as a cross-linked markdown corpus
+```
+
 ## Article JSON-LD
 
 ```html

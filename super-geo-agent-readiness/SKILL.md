@@ -36,6 +36,7 @@ Read this as policy guidance, not engineering reality. Google's published docume
 
 - Google's John Mueller publicly calls markdown pages "a stupid idea." Google's Addy Osmani publicly recommends "Markdown over HTML... creating llms.txt as a discovery layer." Two Googlers, opposite advice, both speaking on the record.
 - Google's Lighthouse tool checks for `llms.txt` when scoring agentic browsing capability, and the developer documentation recommends it.
+- Google published the Open Knowledge Format (OKF), a markdown-with-frontmatter standard for handing site content to AI agents, inside its Knowledge Catalog product, while the AI guide calls "machine readable files... or Markdown" a myth. A second Google team shipped exactly the artifact the guide dismisses. See `agent-readiness.md`.
 - Anthropic's voluntarily-published Claude system prompt contains explicit arbitration rules: present-day questions require search regardless of model confidence, original sources beat aggregators, and "heavily-SEO'd topics like product recommendations" are treated with skepticism. These are not described in Google's guide but are present in the engineering reality of frontier models.
 - Modern retrieval architecture (RAG, passage retrieval, source reranking, documented in academic literature since 2020) operates on extracted chunks regardless of whether the model is told to "think about chunks." Content that cannot be cleanly extracted at the section level never enters the retrieval pool.
 

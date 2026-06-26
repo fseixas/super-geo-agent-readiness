@@ -114,6 +114,50 @@ Convention: every page accessible at `/path/to/page` is also accessible at `/pat
 
 Cloudflare's docs use both: header-based negotiation when the agent supports it, /index.md path-based fallback for everything else. Implement both.
 
+### Open Knowledge Format (OKF) bundle (MAY, registration-layer bet)
+
+OKF is a Google-published markdown standard (v0.1 draft, shipped inside the Knowledge Catalog product) for handing your content to AI agents as a clean, cross-linked corpus. A bundle is a directory of markdown files, each with YAML frontmatter, served at a stable path. It is the highest floor of the machine-readable layer: where `sitemap.xml` lists which URLs exist and `llms.txt` points an agent at the priority pages, an OKF bundle hands over the content itself as a graph the agent can walk.
+
+Honest expectation setting. As of mid-2026 nothing crawls the web for OKF bundles. The spec is young and was built for data teams sharing tables and metrics, so pointing it at a website is a repurposing. A bundle will not move rankings or AI citations today. The case for shipping one is asymmetric cost: the format is plain markdown you can write in a text editor, and the cross-link graph you produce is a free structural audit (islands with nothing pointing in or out become obvious). Treat it the way schema was treated a decade ago: protocol-layer registration that you put down early and let compound, not advertising that pays off this quarter. It also reinforces the calibration argument in this skill, since Google's own AI guide calls "machine readable files... or Markdown" a myth while a different Google team published exactly that.
+
+Minimal structure:
+
+```
+/okf/
+├── index.md                 # Directory listing for progressive disclosure
+├── log.md                   # Optional. Chronological change history, newest first
+└── <concept>.md             # One markdown file per page or concept
+```
+
+Each concept file carries frontmatter with one required field and several recommended ones:
+
+```
+---
+type: Article                                   # REQUIRED. Free string, self-describing. No central registry.
+title: How to Connect the MCP Server            # Recommended. Display name.
+description: One-line summary of the concept.    # Recommended. Used in index listings and previews.
+resource: https://yoursite.com/blog/mcp-server/  # Recommended. Canonical URL of the underlying page.
+tags: [mcp, integration]                         # Optional. Cross-cutting categories.
+timestamp: 2026-06-14T00:00:00Z                  # Optional. ISO 8601 last-modified.
+---
+
+# How to Connect the MCP Server
+
+The body of the page as clean markdown, with navigation and ads stripped out.
+Cross-link to neighbours with bundle-relative links: see the [setup guide](/guides/setup.md).
+```
+
+Rules from the spec worth following:
+- `type` is the only required field. Consumers must tolerate unknown type values, so pick descriptive self-explanatory strings rather than worrying about a fixed taxonomy.
+- Use bundle-relative links beginning with `/` (stable when files move) over relative `./` links.
+- Favor structural markdown (headings, lists, tables, fenced code) over prose in the body, since it aids both human reading and agent retrieval. This matches the chunkability guidance in `content-strategy.md`.
+- `index.md` carries no frontmatter except an optional `okf_version: "0.1"` at the bundle root. It lists each concept with its description.
+- Reserved filenames `index.md` and `log.md` cannot be used for concept documents.
+
+Serving: drop the bundle at `yoursite.com/okf/` starting with `/okf/index.md`, and add a line in `llms.txt` pointing at it. On a static host or Cloudflare this is a drag and drop. Closed platforms that cannot serve files at a custom path are the one real wall.
+
+A copy-paste starter bundle is in `templates.md`.
+
 ### Hidden agent directives
 
 Inside every HTML page, include a comment that tells agents how to find the Markdown:
@@ -509,5 +553,6 @@ Tier 4 (specialized):
 13. Web Bot Auth for sites running their own agents.
 14. x402 / ACP / UCP for agentic commerce.
 15. A2A Agent Card for agent-to-agent products.
+16. OKF bundle at `/okf/` for content sites making the early registration-layer bet.
 
 Anything past Tier 1 plus Schema.org makes a site visibly more agent-ready than 95% of the public web (April 2026 baseline: under 4% adoption for emerging standards).

@@ -38,11 +38,11 @@ Four optimization surfaces, one routing layer:
 - **Content.** Authority, quotability, comprehensiveness, structure, primary-source signaling, the retrieval gate, and the fetched/cited/mentioned distinction. The patterns that get a page cited by ChatGPT, Perplexity, Claude, and Google AI Overviews, plus the off-site presence (video, earned mentions, third-party lists) that the data shows matters most.
 - **Technical site.** FAST framework, Schema.org JSON-LD, robots.txt for AI crawlers, `llms.txt` and `llms-full.txt` at small-site, large-site, and per-directory scales, and the JavaScript pricing failure mode that hands your facts to a competitor.
 - **Platform tactics.** Per-engine optimization for ChatGPT, Perplexity, Google AI Overviews, AI Mode, Claude, Gemini, Copilot, and Grok, with current traffic-share and citation-behavior numbers, including ChatGPT's four-tier source pipeline and query-triage buckets, so you know where to spend effort.
-- **Agent readiness.** MCP Server Cards, A2A Agent Cards, OpenAPI, API Catalog (RFC 9727), OAuth metadata (RFC 8414/9728), Web Bot Auth, x402, ACP, UCP, Markdown content negotiation. Compiled from Cloudflare's agent-readiness work and the agentready.org open specification.
+- **Agent readiness.** MCP Server Cards, A2A Agent Cards, OpenAPI, API Catalog (RFC 9727), OAuth metadata (RFC 8414/9728), Web Bot Auth, x402, ACP, UCP, Markdown content negotiation, and Google's Open Knowledge Format (OKF) bundle. Compiled from Cloudflare's agent-readiness work and the agentready.org open specification.
 
 ## Per-engine calibration: policy vs engineering
 
-Google publishes its own [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) and classifies several common GEO tactics as "myths" for Google AI features. The skill treats Google's guide as a policy document, not as engineering reality. Concrete signals undercut the "myths" framing: Google's own Lighthouse tool checks for `llms.txt`, two senior Googlers (John Mueller and Addy Osmani) have publicly given opposite advice on markdown pages, Anthropic's published Claude system prompt contains explicit source-quality filters that target SEO-pattern content, and modern retrieval architecture operates on chunks regardless of what the policy document says.
+Google publishes its own [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) and classifies several common GEO tactics as "myths" for Google AI features. The skill treats Google's guide as a policy document, not as engineering reality. Concrete signals undercut the "myths" framing: Google's own Lighthouse tool checks for `llms.txt`, a separate Google team published the Open Knowledge Format (a markdown-with-frontmatter standard for handing site content to agents) while the guide calls machine-readable markdown files a myth, two senior Googlers (John Mueller and Addy Osmani) have publicly given opposite advice on markdown pages, Anthropic's published Claude system prompt contains explicit source-quality filters that target SEO-pattern content, and modern retrieval architecture operates on chunks regardless of what the policy document says.
 
 One item on that myths list has since been confirmed by controlled evidence: schema added for AI. The difference-in-differences study above found no AI-citation lift from JSON-LD, so on schema the skill sides with Google and keeps markup for rich results and entity clarity. The `llms.txt` and chunking items remain contested. Calibrate item by item rather than treating the whole list as right or wrong.
 
@@ -59,11 +59,11 @@ super-geo-agent-readiness/
     ├── structured-data.md                JSON-LD for Article, FAQ, Organization, Product, HowTo, Person, plus the controlled evidence on what schema does and does not do.
     ├── ai-crawlers-and-llmstxt.md        Crawler list, robots.txt, llms.txt formats.
     ├── platforms.md                      Per-engine optimization tactics and current citation behavior, including ChatGPT's four-tier source pipeline and query triage.
-    ├── agent-readiness.md                MCP, OAuth, x402, A2A, API Catalog, UCP.
+    ├── agent-readiness.md                MCP, OAuth, x402, A2A, API Catalog, UCP, OKF bundle.
     ├── measurement.md                    Benchmarks, GA4 regex for AI referral traffic, off-site leading indicators, DIY network-traffic verification, monitoring tools.
     ├── ahrefs-2026-studies.md            Consolidated evidence base: 14 Ahrefs studies (2025 to 2026) on schema, listicles, YouTube, ChatGPT retrieval, and AI Overview behavior.
     ├── audit-checklist.md                Severity-graded audit with primary-source signaling, off-site presence, and retrieval-gate checks, plus a final report template.
-    └── templates.md                      Every config in one file, ready to paste.
+    └── templates.md                      Every config in one file, ready to paste, including an OKF bundle starter.
 ```
 
 ## When Claude triggers it
@@ -87,9 +87,10 @@ Compiled and extended from:
 - [agentready.org](https://agentready.org) open specification
 - Google, [AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide)
 - Google, [agent-friendly website best practices](https://web.dev/articles/ai-agent-site-ux)
+- Google, [Open Knowledge Format (OKF) specification](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/HEAD/okf/SPEC.md) (v0.1 draft), the markdown bundle standard inside Knowledge Catalog.
 - Charles Floate, ["I Reverse Engineered LEAKED System Prompts For AI SEO"](https://x.com/Charles_SEO/status/2056323032973754825) (May 2026), for the three-layer arbitration framing and primary-source signaling analysis.
-- Ahrefs, AI search optimization research (2025 to 2026), 14 studies summarized in `references/ahrefs-2026-studies.md` and published on the [Ahrefs AI Search blog](https://ahrefs.com/blog/category/ai-search/).
 - Suganthan Mohanadasan, ["How ChatGPT Actually Picks Sources"](https://suganthan.com/blog/how-chatgpt-picks-sources/) (June 2026), for the four-tier source pipeline, query-triage buckets, fetched/cited/mentioned distinction, JavaScript pricing failure mode, and DIY network-traffic verification.
+- Ahrefs, AI search optimization research (2025 to 2026), 14 studies summarized in `references/ahrefs-2026-studies.md` and published on the [Ahrefs AI Search blog](https://ahrefs.com/blog/category/ai-search/).
 
 ## License
 
