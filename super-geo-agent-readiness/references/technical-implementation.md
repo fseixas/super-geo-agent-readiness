@@ -24,6 +24,20 @@ Fix:
 
 For new projects, default to SSG when possible (best performance, lowest cost). Switch to SSR when content is user-specific or changes per-request. Use ISR for hybrid cases.
 
+#### The pricing-table failure mode (your numbers, someone else's page)
+
+The most expensive form of this failure is hiding facts behind JavaScript. Network-traffic analysis of ChatGPT (Suganthan Mohanadasan, June 2026) captured the thinking model's own recorded reasoning while it tried to source vendor pricing. When the pricing sat behind JavaScript, the model wrote, in its saved chain of thought, that the numbers were "possibly hidden with JavaScript," gave up, and decided to "quote third-party sources since the official page is hard to parse" and "use citations from G2 where appropriate."
+
+Read what happened: the model wanted the vendor's own pricing, could not parse the JS-rendered table, and cited G2 instead. The vendor's own numbers got sourced to a third-party aggregator. A JavaScript pricing table does not just rank badly; it hands your facts to a competitor's listing.
+
+The model fetches the page and greps the HTML for currency symbols (`$`, `€`) and concrete numbers. If those characters are not in the served HTML, they do not exist as far as retrieval is concerned.
+
+Rules for any page carrying facts you want cited (pricing, specs, statistics, dates):
+- The numbers must be in plain server-rendered HTML text.
+- Never inside an image, a PDF, a canvas element, or a chart rendered client-side.
+- Avoid JS-based toggles (monthly/annual switches, tabbed spec tables) that inject the numbers after load. If you must use them, ensure all values are present in the initial HTML and the toggle only shows/hides.
+- Survive a `site:yourdomain.com/pricing` probe: the value must be readable in the raw fetched HTML, not after hydration.
+
 ### A: Accessible
 
 Is the key content understandable without scripts?
@@ -96,7 +110,7 @@ curl -sL https://example.com/page | grep -i "main keyword from page"
 curl -sL -w "%{size_download}\n" https://example.com/page -o /dev/null
 ```
 
-If F fails on a page, fix that before doing any other GEO work. The schema, the llms.txt, the content quality: none of it reaches the AI engine if the crawler gets nothing back.
+If F fails on a page, fix that before doing any other GEO work. The schema, the llms.txt, the content quality — none of it reaches the AI engine if the crawler gets nothing back.
 
 ## Core Web Vitals
 

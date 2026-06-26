@@ -16,20 +16,6 @@ How to track AI search performance, set up GA4 for AI referral traffic, and choo
 | Brand mentions in non-branded AI queries | 26 to 39% | Semrush AI Mentions Study |
 | LLM-originated traffic growth Q2 2024 to Q2 2025 | +800% | Backlinko 2025 |
 | Cloudflare docs token reduction with Markdown | up to 80% | Cloudflare April 2026 |
-| AI Overview click reduction to #1 organic result | 58% (from 34.5% ~10 months earlier) | Ahrefs 2026 |
-| AI Overview citations from Google top 10 | 38% (from 76% a year earlier) | Ahrefs 2026 |
-| AI Overviews on informational-intent queries | 99.9% | Ahrefs 2026 |
-| AI Overview trigger rate on shopping queries | 3.2% | Ahrefs 2026 |
-| ChatGPT URLs retrieved that get cited | ~50% | Ahrefs 2026 |
-| ChatGPT most-cited pages with zero Google visibility | 28% | Ahrefs 2026 |
-| ChatGPT most-cited pages that are influenceable | 32.3% | Ahrefs 2026 |
-| "Best X" lists as share of cited page types | 43.8% | Ahrefs 2026 |
-| Strongest visibility correlate (YouTube mentions, Spearman) | ~0.737 | Ahrefs 2026 |
-| Effect of adding schema on AI citations | ~0 (no meaningful lift) | Ahrefs 2026 (controlled DiD) |
-| AIO vs AI Mode citation overlap | 13.7% (86% semantic agreement) | Ahrefs 2026 |
-| ChatGPT share of Google search volume | ~12% | Ahrefs 2026 |
-| Google vs ChatGPT website referral traffic | ~190x more from Google | Ahrefs 2026 |
-| Google clicks landing in top 10 results | 96.98% | Ahrefs 2026 |
 
 For any number older than the cutoff date, web_search before quoting.
 
@@ -54,16 +40,6 @@ How often your brand name appears in AI responses, branded and non-branded queri
 - Non-branded queries ("Best X for Y") should mention you proportionally to your market presence. Industry baseline: 26 to 39% of non-branded queries include at least one brand mention; emerging brands often see 0%.
 
 Track sentiment too. A brand mention with hedging language ("might be worth considering") is less valuable than a clear recommendation ("we recommend").
-
-### Off-site presence (leading indicator)
-
-Citation rate is a lagging metric. The strongest measured leading indicators sit off your own site, so track them as inputs that predict future visibility.
-
-- YouTube mentions: the single strongest correlate of AI visibility in a 75,000-brand study, ahead of every conventional SEO metric (`ahrefs-2026-studies.md`). Track your own channel's output plus the count of third-party videos that mention your brand.
-- Third-party brand mentions: count credible mentions across Reddit, Quora, industry publications, podcasts, and comparison lists. These feed the engines independently of your pages.
-- Comparison-list placements: track whether your brand appears, and how high, on the credible "best X" lists in your category. Position correlates with being recommended.
-
-These are not vanity metrics. They are the work that moves citation rate two quarters out. A schema rollout is not on this list, because the controlled evidence shows it does not move AI citations (see "Common measurement mistakes").
 
 ### AI referral traffic
 
@@ -177,6 +153,27 @@ These are free, official, and Google-only. They do not measure ChatGPT, Perplexi
 - Ora Deep Scan (agentready.org official scanner)
 - Cloudflare URL Scanner with `agentReadiness: true` option
 
+### DIY verification: read ChatGPT's own network traffic
+
+The paid monitoring tools above only ever see the finished answer and infer the machinery behind it. You can read the machinery directly from your own browser, for free, no special access required. Method documented by Suganthan Mohanadasan (June 2026).
+
+This is HTTP inspection in the browser, not packet sniffing (the wire traffic is TLS-encrypted; the readable layer is the Network panel after decryption).
+
+To see which pipeline fetched each source:
+1. Open ChatGPT in Chrome, press Cmd+Option+I (DevTools), open the Network tab, tick "Preserve log."
+2. Run a query that searches the web.
+3. Press Cmd+Option+F and search the responses for `result_source`. Each web result carries the field, stamped `serp`, `labrador`, `bright`, or `oxylabs`.
+
+To pull the full picture (fan-out sub-queries, citations, the thinking model's reasoning), open the Console on a conversation that searched the web, type `allow pasting` once, then run a fetch against ChatGPT's own conversation API for the current `location.pathname` conversation ID, using the session `accessToken` from `/api/auth/session`, and walk the returned JSON for objects carrying `result_source`, collecting the `attribution`/`url` and the `result_source` value into a table. It reads only your own logged-in session, so nothing leaves your machine.
+
+What this gives you that the paid tools cannot:
+- Whether your target query even triggers a search (the `turn_use_case` bucket) or gets answered from training (`text`).
+- Which tier fetched each competing source, so you can see whether you are competing in the scraped tier or shut out by the licensed tier.
+- Whether your own facts were read from your page or sourced to a third party because your page would not parse.
+- The exact cleaned-up sub-queries the model wrote, versus the messy phrase a person typed.
+
+Caveats: single logged-in account, single-user sample. Structural findings (which fields exist, what they are named, that `text` queries skip the web) are firm because seeing a field once proves it exists. Frequency findings (which domain dominates, percentage splits) are directional and skew to whatever vertical you queried. The structure holds week to week; the numbers move.
+
 ## Monitoring workflow
 
 Weekly:
@@ -223,4 +220,3 @@ Avoid drowning executives in tool-specific scores. Tie everything back to traffi
 - Choosing too many tools. Overlapping data slows decisions. Pick one citation tracker, one content tool, and one brand mention tool.
 - Reporting per-platform numbers in silos. The cross-platform pattern matters more than any single engine's behavior.
 - Ignoring the third-party citation surface. Most of the lift comes from mentions on Reddit, Quora, industry blogs, podcasts. Track those separately.
-- Treating a schema rollout as a citation KPI. A controlled study found adding JSON-LD produced no meaningful AI-citation lift on any platform (`ahrefs-2026-studies.md`). Measure schema by rich-result eligibility in classic Search, not by AI citations.

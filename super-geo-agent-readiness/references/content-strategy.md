@@ -22,8 +22,6 @@ Don't:
 - Use anonymous authors or generic byline ("By the Team").
 - Recycle definitions everyone else publishes. AI engines prefer the source, not the summary.
 
-A note on where authority actually comes from: across 75,000 brands, the factors most correlated with AI visibility were off the page, not on it. YouTube mentions correlated more strongly than any conventional SEO metric (~0.737), and off-site brand mentions followed close behind (`ahrefs-2026-studies.md`). On-page authority signals matter for winning a citation once a page is in play, but the larger lever is being a brand the engines already know about from video, podcasts, and third-party coverage. Content work and off-site presence are complementary, and the off-site side is usually the more neglected of the two.
-
 Example:
 
 Bad: "AI search traffic is growing fast and many websites are seeing big gains."
@@ -65,8 +63,6 @@ Do:
 Don't:
 - Cap an article at an artificial word count if the topic needs more.
 - Skip the boring "what is it" basics on advanced pages. AI engines may need that context for query matching.
-- Pad to hit a length target. Short and long content both earn AI Overview citations; length is not a selection factor on its own (`ahrefs-2026-studies.md`). Comprehensiveness means covering the topic, not hitting a word count.
-- Treat publishing more pages as a visibility strategy. Site-wide page count showed almost no correlation with AI visibility across 75,000 brands. Depth and off-site authority carry the weight, not volume.
 
 ### 4. Structure
 
@@ -103,11 +99,30 @@ The four pillars map to these layers:
 
 The operational implication is non-obvious: a piece of content that is well-written and accurate can still fail at the arbitration layer if it pattern-matches to mid-tier SEO output. The next section addresses that filter directly.
 
+## Fetched, cited, and mentioned are three different outcomes
+
+People conflate these. They are separate, and you can win or lose each one independently. Network-traffic analysis of ChatGPT (Suganthan Mohanadasan, June 2026) makes the distinction concrete.
+
+- **Fetched.** The model pulled your page into its working context. Invisible to the reader. In ChatGPT's traffic this is the `result_source` object.
+- **Cited.** Your page is attached as the source behind a specific sentence, the clickable footnote.
+- **Mentioned.** Your brand name appears in the answer, often as a chip linking to your site, but it is not the source of the claim.
+
+The gap between fetched and cited is mechanical, not editorial. A citation has to bind to text the model actually extracted. In the cited analysis, Reddit was fetched 278 times and cited 11 times; YouTube was fetched 201 times and cited zero. The reason: a Reddit thread is all text on the page, while a fetched YouTube page returns metadata, not the transcript, so there is nothing extractable to bind a citation to. Ahrefs (1.4 million prompts) and Profound corroborate the Reddit-over-YouTube citation gap, so the direction is reliable even though the exact per-batch numbers are not.
+
+Two consequences for content:
+
+1. Win on text-extractable formats. If your insight lives only in a video, a slide image, or a PDF, it can get fetched but not cited. Put the citable claim in plain HTML text on the page.
+2. Being topically relevant is not enough. A citation binds to a precise claim, so the page has to be the single best support for that specific sentence, not merely on-topic.
+
+You also cannot cite yourself for the verdict. The claim *about* you (best tool, top pick) gets sourced from a third party even when your own page supplied the underlying facts. Earn third-party coverage on review sites and Reddit for the opinion; own your facts in clean HTML for the specs and pricing.
+
+## One strong page per claim (domain deduplication)
+
+ChatGPT's retrieval dedupes by domain. Twenty thin pages from your site collapse into one. Publishing a separate low-quality page for every fan-out sub-query does not multiply your chances; it wastes crawl and dilutes authority. One strong, comprehensive page that owns a claim beats a pile of weak ones targeting variants of it. This runs directly against the high-volume programmatic-content strategy many operators still default to.
+
 ## Content types most likely to earn AI citations
 
-Some content types massively outperform others for AI citation rates. Source: Semrush AI citation research; corroborated by Backlinko, Animalz, the Princeton GEO paper (arxiv 2311.09735), and the Ahrefs 2026 study set (`ahrefs-2026-studies.md`).
-
-The strongest single finding: across 26,283 source URLs and 750 top-of-funnel prompts, recently updated "best X" comparison lists were the most-cited page type, at 43.8% of all citations, and the pattern held across every major assistant. Position inside the list correlated with being recommended (top third beats bottom), and freshness mattered (79.1% of cited lists had been updated in 2025). This does not contradict the primary-source filter below. It sharpens it: the comparison format wins when executed as a primary source, and loses when executed as thin affiliate filler. Note also that 35% of cited best-lists sat on low-authority domains, so the format works partly because ChatGPT leans on Bing, where weaker sites rank more easily. Do not read that as license to publish low-quality lists; read it as evidence that a credible, well-maintained list in your category is high-leverage.
+Some content types massively outperform others for AI citation rates. Source: Semrush AI citation research; corroborated by Backlinko, Animalz, and the Princeton GEO paper (arxiv 2311.09735).
 
 | Content type | Why it earns citations | Best practices |
 |---|---|---|
@@ -159,19 +174,6 @@ The fix is not to abandon those formats. Lists, comparisons, and roundups have l
 - Caveats and falsifiers included where the analysis has limits.
 
 A useful test: would a journalist citing this page quote it as a primary source, or as an example of "what the consensus says"? If the second, the page is in aggregator territory and will be filtered at the arbitration layer.
-
-## The retrieval gate: title, snippet, URL
-
-Before an engine reads your page, it decides whether to open it at all. ChatGPT retrieves dozens of candidate URLs per query but cites only about half of them (`ahrefs-2026-studies.md`). Each candidate comes back as a title, a snippet, a URL, and an ID, and ChatGPT uses that metadata to choose which pages are worth opening. Being retrieved and being cited are different events, separated by a gate that runs on metadata, not full content.
-
-Practical consequences:
-
-- Write the title tag to match likely query phrasing and to state the subject plainly. A vague or clever title loses at the gate.
-- Write a meta description that answers, not teases. The snippet is part of the decision.
-- Use clean, human-readable URLs (`/guides/geo-content-strategy`, not `/p?id=8842`). Opaque URLs carry less signal at the gate.
-- The first screenful still has to deliver, because pages that clear the gate are then judged on content. But a strong page with a weak title and snippet may never be opened.
-
-This sits upstream of the four pillars. The pillars win the citation once the page is open; the gate decides whether the page is opened.
 
 ## Chunkability rules
 

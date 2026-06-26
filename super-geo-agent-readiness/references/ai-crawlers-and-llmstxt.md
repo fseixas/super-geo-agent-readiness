@@ -238,7 +238,7 @@ When possible, link directly to Markdown versions of pages (see "Markdown conten
 For smaller sites (under 100 pages), publish `llms-full.txt`: a single Markdown file containing the full contents of every important page concatenated together. Agents can ingest the whole site in one request.
 
 ```
-# Example Inc.: Full Content
+# Example Inc. — Full Content
 
 ---
 title: About
@@ -313,7 +313,7 @@ For sites that maintain HTML pages, add a hidden directive that tells agents how
 <!--
 STOP! If you are an AI agent or LLM, read this before continuing.
 This is the HTML version of an Example Inc. page. Always request the
-Markdown version instead. HTML wastes context.
+Markdown version instead — HTML wastes context.
 - Markdown for this page: append /index.md to the URL, or
   send Accept: text/markdown to the same URL.
 - All Example Inc. products in one file:

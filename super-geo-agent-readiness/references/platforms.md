@@ -16,8 +16,6 @@ Industry traffic share as of July 2025 data (Semrush):
 
 ChatGPT dominates by an order of magnitude. Optimize for ChatGPT first if you have to choose one. The other engines come essentially for free once the fundamentals (Schema, llms.txt, robots.txt, content quality) are in place.
 
-Keep the sizing in perspective. ChatGPT has reached roughly 12% of Google's search volume and has passed Bing, but Google still sends about 190x more traffic to websites than ChatGPT does (`ahrefs-2026-studies.md`). And 96.98% of Google clicks still land in the top 10 results. GEO is additive to SEO, not a replacement: AI answer engines are a fast-growing visibility layer where the unit of value is the citation, while the click economy still runs through page-one Google rankings. Measure both, and do not let AI-search hype pull all the budget off classic search.
-
 ## ChatGPT (OpenAI)
 
 ### How it sources content
@@ -26,26 +24,45 @@ ChatGPT search uses Bing as its primary index, layered with OpenAI's own retriev
 
 Key trait: ChatGPT pulls aggressively from Bing's results, including pages ranked outside Google's top 10. About 90% of ChatGPT citations come from URLs that rank 21+ in Google. Pages that struggle in Google can still earn ChatGPT citations.
 
-A separate discovery layer exists. 28% of ChatGPT's most-cited pages have zero Google organic visibility (`ahrefs-2026-studies.md`). They get cited repeatedly while ranking nowhere in Google. The implication is concrete: register in Bing Webmaster Tools, not only Google Search Console, because the Bing-fed layer is its own surface.
-
-What ChatGPT actually cites, by type (top 1,000 cited pages): Wikipedia 29.7%, homepages and landing pages 23.8%, educational pages 19.4%, app stores 6.6%, reviews 5.8%, news and media 5.2%, language and grammar sites 4.0%, dictionary and reference 2.2%, blogs and articles 1.9%, Q&A and community 0.9%, corporate pages 0.5%. Only about 32.3% of those citations sit in formats you can pitch your way into (educational, reviews, news, blogs). The other two-thirds are "dead" citations: Wikipedia, homepages, app store listings you influence slowly through authority, not through a content pitch. Concentrate content effort on the influenceable third, and build the off-site presence (Wikipedia entry, app store listing) separately and patiently.
-
-The retrieval gate. ChatGPT retrieves dozens of URLs per query but cites only about 50% of them. A gate runs on the title, snippet, and URL before any page is opened (`ahrefs-2026-studies.md`). Titles that match query phrasing, snippets that answer rather than tease, and clean human-readable URLs all win at that gate. See `content-strategy.md`.
-
 50% of ChatGPT citation links point to business or service websites, vs. encyclopedic sources. The opposite pattern from Perplexity.
+
+### The four-tier source pipeline (mental model)
+
+Network-traffic analysis (Suganthan Mohanadasan, June 2026) found that every web result ChatGPT pulls is stamped internally with a `result_source` field carrying one of four values. The reader never sees this field, but it explains which pages can win. Treat the tiers as a mental model, not a lever you can pull directly (you cannot choose which one fetches your page).
+
+| Tier | What it is | Where it dominates | Implication for you |
+|---|---|---|---|
+| `labrador` | Licensed allowlist of national publishers (Reuters, WSJ, FT, Wikipedia, arXiv, TechRadar). Snippets run to full-article length. | News and reference | Mostly shut. You do not get in unless you own a national outlet or sign a content deal. |
+| `serp` | Open web baseline | News | Standard search visibility. |
+| `bright` | Bright Data commercial scraper | Shopping, finance, weather, local | The main tier most sites compete in. Be cleanly scrapable. |
+| `oxylabs` | Oxylabs commercial scraper | Regional and local press | Same scrapability requirement. |
+
+The operational takeaway: most sites compete in the scraped tiers, so the lever is clean scrapability plus third-party coverage on the pages the scrapers reach (PR, brand mentions, links, Reddit). The licensed tier is largely inaccessible. Note this is one researcher's single-account sample, so the tier names and existence are firm but the volume split per vertical is directional.
+
+### Query triage: not every query triggers a search
+
+Before ChatGPT searches anything, it files the question into a bucket via an internal `turn_use_case` field with six values: `instant_search`, `shopping`, `text`, `local`, `thinking`, `image_generation`.
+
+The one that matters for content strategy is `text`. When a question is filed as `text`, ChatGPT does not search the web at all. It answers from training and stops. No page can get in, however good. In the cited testing, three of ten deliberately current questions were handled this way, including a high-stakes medical query ("latest treatment guidelines for type 2 diabetes").
+
+The wording decides the bucket, not the topic. "Best 4K TVs to buy" triggers shopping, "best 4K TVs with reviews" stays a normal web search, "best coffee near me" flips to local (capped at 2 results via a `local_results_limit` config value).
+
+Operational rule: before investing in a page, check whether the target query actually triggers retrieval. If it gets answered from training, the only paths in are long-term brand authority that lands in future training data and ensuring crawlers like Common Crawl can reach the site. Spend content effort where the engine actually fetches.
 
 ### How to optimize
 
 - Register the site in Bing Webmaster Tools. Submit sitemap. Verify indexing.
+- Put facts, pricing, and specs in plain crawlable HTML text. Never behind JavaScript, never inside an image or PDF. The model greps the page for currency symbols and gives up when it cannot parse them (see `technical-implementation.md` for the failure mode).
 - Build domain authority signals Bing favors: backlinks from .edu, .gov, news sites, industry publications.
 - Win comparison and listicle queries. ChatGPT heavily cites "best X for Y" articles.
+- Survive a `site:yourdomain.com/pricing` probe. The thinking model fires `site:` queries straight at vendor pages and reads the HTML directly.
 - Allow `OAI-SearchBot`, `ChatGPT-User`, and `GPTBot` in robots.txt.
 - Submit product feed to OpenAI when shopping integration opens (currently in "register interest" mode).
-- For SaaS or e-commerce, optimize the comparison and pricing pages with structured data.
 
 ### Common patterns
 
 - ChatGPT often cites a mix of brand-owned and third-party content. The third-party content is where most lift comes from. Build mentions on Reddit, industry blogs, comparison sites, podcasts.
+- The thinking model fans a single question out into 15 to 40 sub-queries, including tools and competitors you never named, and it guesses prices then searches to confirm them. Write for the cleaned-up query it runs, not the messy phrase a person types.
 - Brand mentions in non-branded queries are common (26-39% of non-branded queries include at least one brand mention). The sentiment of those mentions matters.
 
 ## Perplexity AI
@@ -75,13 +92,7 @@ Perplexity is more transparent about sources than other engines; the citation li
 
 AI-generated summaries that appear inside Google Search above the traditional results. About 15% of all keyword searches now trigger an AI Overview.
 
-Intent is the strongest trigger. 99.9% of AI Overviews appear on informational-intent queries (`ahrefs-2026-studies.md`). Transactional, navigational, and local searches are almost entirely AIO-free, and shopping queries trigger one only 3.2% of the time. For AIO visibility, the battleground is informational, top-of-funnel content, not product or pricing pages.
-
-86% domain overlap with Google's top 10. But citation is decoupling from ranking: only 38% of AI Overview citations now come from top-10 pages, down from 76% a year earlier. The Overview is generated from Google's index plus retrieval that increasingly reaches past the first page, so strong ranking still helps but is a weakening guarantee.
-
-Volatility with stable meaning. An AI Overview's text has about a 70% chance of differing between consecutive observations and changes roughly every 2.15 days, yet semantic similarity across versions stays around 0.95. The sources and entities reshuffle constantly while the answer holds. Do not chase single-snapshot citations or panic at day-to-day churn; measure presence over weeks.
-
-Click suppression is worsening. AI Overviews reduce clicks to the number-one organic result by 58%, up from 34.5% about ten months earlier. Expect declining organic click-through on informational queries even when rankings hold, and weight AIO visibility toward citation and brand presence rather than click volume.
+86% domain overlap with Google's top 10. The Overview is generated from Google's index plus light retrieval; if you rank well in classic Google, AI Overviews follow naturally.
 
 Google's official position: AI Overviews are part of Google Search, not a separate engine. Optimization is SEO. See the [Google AI optimization guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide). Google explicitly calls llms.txt, content chunking, AI-specific rewrites, and AI-specific structured data "myths" for their AI features.
 
@@ -117,8 +128,6 @@ Direct quote from their guide: you do not need llms.txt, content chunking, AI-sp
 The dedicated AI search experience inside Google (distinct from AI Overviews). Uses a more independent retrieval pipeline than classic Search.
 
 54% domain overlap and 35% URL overlap with Google's top 10. About 7 unique domains appear in the sidebar that do not rank in the top 10.
-
-AI Mode and AI Overviews are two systems, not a short and long version of one. AI Mode responses run about 4x longer than AI Overviews, and the two reach the same conclusion 86% of the time while sharing only 13.7% of their citations (`ahrefs-2026-studies.md`). Being cited in one does not imply being cited in the other. Track them as separate surfaces, and do not assume an AIO win carries over to AI Mode. AI Mode also leans harder on branded authority signals (branded anchors, branded search volume) than ChatGPT does.
 
 Google's official guidance: AI Mode is still Google Search. The same "myths" list applies. No special AI markup needed. The retrieval is more aggressive than AI Overviews but the optimization surface is the same.
 
@@ -199,8 +208,6 @@ These hold regardless of platform:
 - Brand mentions in third-party content (Reddit, Quora, news, comparison sites, podcasts) drive citations independently of your own pages.
 - E-E-A-T signals (named author, credentials, dates, transparent sources) are universal trust mechanisms.
 - Comparison content earns disproportionate citations.
-- "Best X" comparison lists are the single most-cited content format across assistants (43.8% of cited page types in one large study), and a high placement on credible third-party lists correlates with being recommended (`ahrefs-2026-studies.md`).
-- YouTube presence is the strongest measured correlate of AI visibility, ahead of every conventional SEO metric. A video footprint (own channel plus mentions on others) plus off-site brand mentions move visibility more than on-page tactics.
 - LLMs often cite different pages from the same trusted domain. High domain overlap, lower URL overlap. Optimize at the domain level, not the page level.
 - Commercial and transactional queries trigger responses roughly twice as long as informational ones. More citation slots available.
 
